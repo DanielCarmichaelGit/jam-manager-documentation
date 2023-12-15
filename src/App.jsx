@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Header from "./components/header";
+import "./App.css";
+import GettingStarted from "./components/gettingStarted";
+import Endpoint from "./components/endpoint";
+import DataHierarchy from "./components/DATAHIERARCHY.JSX";
+import endpoints from "./data/endpoints";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const jsonData = {
+    key1: "value1",
+    key2: "value2",
+    key3: {
+      nestedKey1: "nestedValue1",
+      nestedKey2: "nestedValue2",
+    },
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container">
+      <Header />
+      <DataHierarchy />
+      <GettingStarted />
+      <h1 style={{color: "#333", textAlign:"left", margin:"30px 0px 0px 0px"}}>Endpoints</h1>
+      {endpoints.map((endpoint) => {
+        return (
+          <Endpoint
+            method={endpoint.method}
+            hook={endpoint.hook}
+            input_json={endpoint.input}
+            output_json={endpoint.output}
+            params={endpoint.params}
+            description={endpoint.description}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
-export default App
+export default App;
