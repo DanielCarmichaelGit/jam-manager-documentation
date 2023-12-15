@@ -3,17 +3,20 @@ import Header from "./components/header";
 import "./App.css";
 import GettingStarted from "./components/gettingStarted";
 import Endpoint from "./components/endpoint";
-import DataHierarchy from "./components/DATAHIERARCHY.JSX";
 import endpoints from "./data/endpoints";
+import DataHierarchy from "./components/hierarchy";
 
 function App() {
-
   return (
     <div className="container">
       <Header />
-      <DataHierarchy />
       <GettingStarted />
-      <h1 style={{color: "#333", textAlign:"left", margin:"30px 0px 0px 0px"}}>Endpoints</h1>
+      <DataHierarchy />
+      <h1
+        style={{ color: "#333", textAlign: "left", margin: "30px 0px 0px 0px" }}
+      >
+        Endpoints
+      </h1>
       {endpoints.map((endpoint, index) => {
         return (
           <Endpoint
@@ -25,7 +28,7 @@ function App() {
             description={endpoint.description}
             key={index}
           />
-        )
+        );
       })}
     </div>
   );
