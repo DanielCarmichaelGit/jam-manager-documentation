@@ -54,7 +54,6 @@
     flex-direction: column;
     text-align: left;
     color: #333;
-    background-color: #333;
     height: fit-content;
     overflow-x: scroll;
 }
